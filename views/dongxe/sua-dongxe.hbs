@@ -1,0 +1,91 @@
+<head>
+    <style>
+        body {
+            padding: 50px;
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+        }
+        form {
+            text-align: center;
+        }
+
+
+        h1 {
+            flex: inherit;
+            text-align: center;
+            color: red;
+            text-transform: uppercase;
+        }
+
+        button {
+            background-color: #1c87c9;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 2px solid rgb(12, 221, 186);
+            color: darkorange;
+            background-color: cyan;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+        form input {
+            height: 40px;
+            width: 20%;
+            align-items: center;
+        }
+
+        .form button {
+            border: 2px solid gray;
+            color: gray;
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        a {
+            background-color: #1c87c9;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 2px solid rgb(12, 221, 186);
+            color: darkorange;
+            background-color: cyan;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a:hover,
+        button:hover {
+            background: #ff0000;
+            color: #fff;
+        }
+    form label{
+        font-weight: bold;
+    }
+
+    </style>
+</head>
+<h1>Thêm Loại Xe</h1>
+<form action="/dongxes/luu-sua" method="post"
+      enctype="multipart/form-data">
+      <input type="hidden" name="id" value="{{dx._id}}">
+    <div>
+        <label >Tên Dòng Xe :</label>
+        <input type="text" name="tendongxe" required value="{{dx.tendongxe}}">
+    </div>
+    <button type="submit">Lưu</button>
+    <a href="/" class="button">Hủy</a>
+    </div>
+</form>

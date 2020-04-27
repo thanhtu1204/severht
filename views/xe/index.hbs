@@ -1,0 +1,136 @@
+<head>
+    <title>APP OTO</title>
+    <style>
+        a:hover{
+            color:yellow ;
+            background: #08ff00;
+        }
+        a:active {
+            color: yellow;
+            background: red;
+        }
+        .bt:hover {
+            background: #ff0000;
+            color: #fff;
+        }
+        .bts:hover{
+            background: #0090ff;
+            color: #fff;
+        }
+        .button {
+            background-color: cyan;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 2px solid rgb(12, 221, 186);
+            color: darkorange;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .bt ,.bts{
+            margin: 0.5rem;
+            border: 2px solid gray;
+            color: gray;
+            background-color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+
+        }
+
+        table {
+            counter-reset: rowNumber;
+            width: 80%;
+            padding: 1rem;
+            margin-left: 10rem;
+            margin-top: 2rem;
+            text-align: center;
+            border: 1px solid rebeccapurple;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        table tr{
+            text-align: center;
+            margin: 0.5rem;
+            padding: 1.5rem;
+        }
+        table tr td{
+            text-align: center;
+            margin: 1rem;
+            padding: 1rem;
+            align-items: center;
+
+        }
+
+        table tr::before {
+            display: table-cell;
+            counter-increment: rowNumber;
+            content: counter(rowNumber) " ";
+            padding-right: 0.3em;
+            padding-top:1rem;
+            text-align: center;
+
+        }
+    </style>
+    <h1 style="text-align: center;color: red;text-transform: uppercase">Xe</h1>
+
+    <h1 style="text-align: center">
+        <a href="/" class="button">Loại Xe</a>
+        <a href="/xe" class="button">Xe</a>
+        <a href="/" class="button">Loại Phụ Kiện</a>
+        <a href="/" class="button">Phụ Kiện</a>
+        <a href="/" class="button">Tin Tức</a>
+    </h1>
+
+
+    <table >
+        <thead>
+        <tr>
+            <th scope="col">Tên Xe</th>
+            <th scope="col">Dòng xe</th>
+            <th scope="col">Kích Thước</th>
+            <th scope="col">Chiều cao</th>
+            <th scope="col">Tải Trọng</th>
+            <th scope="col">Động cơ</th>
+            <th scope="col">Hộp số</th>
+            <th scope="col">Tùy Chỉnh</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each xe}}
+            <tr >
+                <td scope="row">{{this.tensp}}</td>
+                <td scope="row">{{this.dongxe_id.tendongxe}}</td>
+                <td scope="row">{{this.kichthuoc}}</td>
+                <td scope="row">{{this.chieucaocoso}}</td>
+                <td scope="row">{{this.taitrong}}</td>
+                <td scope="row">{{this.dongco}}</td>
+                <td scope="row">{{this.hopso}}</td>
+                <td>
+                    <a href="/xe/sua/{{this._id}}" class="bts">Sửa</a>
+                    <a href="javascript:void(0);" onclick="confirmDelete('/xe/xoa/{{this._id}}','{{this.tenloaixe}}')"
+                       class="bt">Xóa</a>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div style="text-align: center" class="container-fluid">
+        <a href="/xe/them" class="button">Thêm Xe</a>
+    </div>
+    <script>
+        function confirmDelete(url, catename) {
+            var conf = confirm(`Are you sure delete? ${catename}`);
+            if (conf == true) {
+                window.location.href = url;
+            }
+        }
+
+    </script>

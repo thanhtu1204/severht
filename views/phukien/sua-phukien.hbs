@@ -1,0 +1,156 @@
+<head>
+    <style>
+
+        input[type=text], select,textarea,input[type=file] {
+            width: 100%;
+            padding: 4px 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 4px 10px;
+            margin: 4px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+
+        body {
+            padding: 50px;
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+        }
+        form {
+            margin-left: 30%;
+            text-align: center;
+            max-width: 40%;
+            align-items: center;
+        }
+
+
+        h1 {
+            flex: inherit;
+            text-align: center;
+            color: red;
+            text-transform: uppercase;
+        }
+
+        button {
+            background-color: #1c87c9;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 2px solid rgb(12, 221, 186);
+            color: darkorange;
+            background-color: cyan;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+        form input {
+            height: 40px;
+            width: 20%;
+            align-items: center;
+        }
+
+        .form button {
+            border: 2px solid gray;
+            color: gray;
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        a {
+            background-color: #1c87c9;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 2px solid rgb(12, 221, 186);
+            color: darkorange;
+            background-color: cyan;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a:hover,
+        button:hover {
+            background: #ff0000;
+            color: #fff;
+        }
+        form label{
+            font-weight: bold;
+            align-items: start;
+        }
+    </style>
+</head>
+<h1>Sửa Phụ Kiện</h1>
+<form action="/phukien/luu-sua" method="post"
+      enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{{pk._id}}">
+
+    <div>
+        <label >Tên Loại phụ kiện :</label>
+        <select name="phukien_id" >
+            {{#each lpk}}
+                <option value="{{this._id}}" {{#if selected}} selected {{/if}}>{{this.tenloaiphukien}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div>
+        <label >Tên phụ kiện :</label>
+        <input type="text" name="tenphukien" required value="{{pk.tenphukien}}"/>
+    </div>
+    <div>
+        <label >Giới Thiệu :</label>
+        <input type="text" name="gioithieu" required value="{{pk.gioithieu}}"/>
+    </div>
+    <div>
+        <label >Xuất xứ :</label>
+        <input type="text" name="xuatxu" required value="{{pk.xuatxu}}">
+    </div>
+    <div>
+        <label >Giá :</label>
+        <input type="text" name="giá" required value="{{pk.gia}}">
+    </div>
+    <div>
+        <img style="width: 150px" src="{{pk.anh}}" >
+    </div>
+    <div>
+        <label >Tải ảnh lên</label>
+        <input type="file" name="anh"  value="{{pk.anh}}" required/>
+    </div>
+    <button type="submit">Lưu</button>
+    <a href="/" class="button">Hủy</a>
+    </div>
+</form>
