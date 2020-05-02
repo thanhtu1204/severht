@@ -48,8 +48,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-// // Start Server
-// app.listen(80, function(){
-//   console.log('Server started on port 80...');
-// });
+// Start Server
+app.listen(80, function(){
+  console.log('Server started on port 80...');
+});
 module.exports = app;
