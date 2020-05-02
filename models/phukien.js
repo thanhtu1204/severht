@@ -6,6 +6,7 @@ var PhuKienSchema= new Schema({
     gioithieu:{ type: String, default: null },
     xuatxu:{ type: String, default: null },
     gia:{ type: String, default: null },
-    anh:{  type: String, default: null }
+    anh:{  type: String, default: null },
+    htdongxe:{ type: String, default: null }
 });
 module.exports = mongoose.model('phukiens',PhuKienSchema);

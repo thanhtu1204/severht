@@ -37,7 +37,7 @@ exports.Sua_Loai_Phu_Kien=(req,res,next) =>{
 
 };
 exports.Xoa_Loai_Phu_Kien=(req,res,next) =>{
-    loaiphukiens.deleteOne({ _id: req.params.lpkId }, function (err) {
+    loaiphukiens.remove({ _id: req.params.lpkId }, function (err) {
         if (err) return handleError(err);
         res.redirect('/loaiphukien');
     });

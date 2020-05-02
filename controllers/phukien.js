@@ -14,6 +14,7 @@ exports.Them_Phu_Kien = (req, res, next) => {
     model.gia = req.body.gia;
     model.gioithieu = req.body.gioithieu;
     model.xuatxu = req.body.xuatxu;
+    model.htdongxe=req.body.htdongxe;
     model.phukien_id=req.body.phukien_id;
     if (req.file != null) {
         model.anh = req.file.path.replace('public', '');
@@ -28,16 +29,16 @@ exports.Them_Phu_Kien = (req, res, next) => {
 };
 exports.Sua_Phu_Kien=(req, res, next) => {
     // neu khong upload anh => req.file == null
-    let {id, tenphukien,gioithieu,xuatxu,gia,phukien_id} = req.body;
+    let {id, tenphukien,gioithieu,xuatxu,gia,phukien_id,htdongxe} = req.body;
     phukiens.findOne({_id: id}, function(err, model){
         if(err){
             res.send('Id khong ton tai');
         }
-
         model.tenphukien = tenphukien;
         model.gioithieu=gioithieu;
         model.xuatxu=xuatxu;
         model.gia=gia;
+        model.htdongxe=htdongxe;
         model.phukien_id=phukien_id;
         if(req.file != null){
             model.anh = req.file.path.replace('public', '');

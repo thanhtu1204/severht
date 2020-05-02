@@ -1,7 +1,8 @@
 <head>
     <style>
 
-        input[type=text], select,textarea,input[type=file] {
+
+        input[type=password], input[type=text], select, textarea, input[type=file] {
             width: 100%;
             padding: 4px 10px;
             margin: 8px 0;
@@ -38,6 +39,7 @@
             font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
         }
+
         form {
             margin-left: 30%;
             text-align: center;
@@ -86,6 +88,7 @@
             font-size: 20px;
             font-weight: bold;
         }
+
         a {
             background-color: #1c87c9;
             text-align: center;
@@ -108,49 +111,25 @@
             background: #ff0000;
             color: #fff;
         }
-        form label{
+
+        form label {
             font-weight: bold;
             align-items: start;
         }
 
     </style>
 </head>
-<h1>Thêm Phụ Kiện</h1>
-<form action="/phukien/them-moi" method="post"
+<h1>Đăng nhập!</h1>
+<form action="/login/confirm" method="post"
       enctype="multipart/form-data">
     <div>
-        <label >Tên Loại phụ kiện :</label>
-        <select name="phukien_id" >
-            {{#each lpk}}
-                <option value="{{this._id}}">{{this.tenloaiphukien}}</option>
-            {{/each}}
-        </select>
+        <label>user :</label>
+        <input type="text" name="user" required>
     </div>
     <div>
-        <label >Tên phụ kiện :</label>
-        <input type="text" name="tenphukien" required>
+        <label>password :</label>
+        <input type="password" name="password" required>
     </div>
-    <div>
-        <label >Giới Thiệu :</label>
-        <input type="text" name="gioithieu" required>
-    </div>
-    <div>
-        <label >Xuất xứ :</label>
-        <input type="text" name="xuatxu" required>
-    </div>
-    <div>
-        <label >Hỗ trợ các dòng xe :</label>
-        <input type="text" name="htdongxe" required>
-    </div>
-
-    <div>
-        <label >Giá :</label>
-        <input type="text" name="gia" required>
-    </div>
-    <div>
-        <label >Tải ảnh lên</label>
-        <input type="file" name="anh" required/>
-    </div>
-    <button type="submit">Lưu</button>
-    <a href="/" class="button">Hủy</a>
+    <button type="submit">đăng nhập!</button>
+    <a href="/login" class="button">Hủy</a>
 </form>

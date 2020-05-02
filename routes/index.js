@@ -3,13 +3,14 @@ const multer = require("multer");
 const router = express.Router();
 const dongxes = require("../models/dongxe");
 const xes = require("../models/xe");
+const useradmin = require("../models/useradmin");
 const tintucs = require("../models/tintuc");
-const loaiphukiens=require("../models/loaiphukien");
-const phukiens=require("../models/phukien");
+const loaiphukiens = require("../models/loaiphukien");
+const phukiens = require("../models/phukien");
 const DongxeControllers = require('../controllers/dongxe');
 const XeControllers = require('../controllers/xe');
 const TintucControllers = require('../controllers/tintuc');
-const LoaiphukienControllers=require('../controllers/loaiphukien.js');
+const LoaiphukienControllers = require('../controllers/loaiphukien.js');
 const PhukienControllers = require('../controllers/phukien');
 // const upload = require('../middleware/upload');
 
@@ -25,7 +26,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
     // reject a file
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'||file.mimetype == "image/jpg") {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype == "image/jpg") {
         cb(null, true);
     } else {
         cb(null, false);
@@ -41,7 +42,7 @@ const upload = multer({
 });
 
 
-router.get("/", DongxeControllers.Xem_Dong_Xe);
+router.get("/home",DongxeControllers.Xem_Dong_Xe);
 router.get('/dongxes/them', function (req, res, next) {
     res.render('dongxe/them-dongxe');
 });
@@ -73,25 +74,25 @@ router.get('/xe/them', function (req, res, next) {
     })
 });
 //sua xe//
-router.get('/xe/sua/:xId', function(req, res, next){
+router.get('/xe/sua/:xId', function (req, res, next) {
     dongxes.find({}, (err, data) => {
 
-        xes.findOne({_id: req.params.xId}, (err, xData)=> {
-            if(err){
+        xes.findOne({_id: req.params.xId}, (err, xData) => {
+            if (err) {
                 res.send('id san pham khong ton tai');
             }
 
-            for(var i = 0; i < data.lengnth; i++){
-                if(data[i]._id == xData.dongxe_id.toString()){
+            for (var i = 0; i < data.lengnth; i++) {
+                if (data[i]._id == xData.dongxe_id.toString()) {
                     data[i].selected = true;
                 }
             }
-            res.render('xe/sua-xe', {dx: data,x : xData});
+            res.render('xe/sua-xe', {dx: data, x: xData});
         });
     })
 });
 router.post('/xe/luu-sua', upload.array('anh'), XeControllers.Sua_Xe);
-router.post('/xe/them-moi', upload.array('anh', 10),XeControllers.Them_Xe);
+router.post('/xe/them-moi', upload.array('anh', 10), XeControllers.Them_Xe);
 router.get('/xe/xoa/:xId', XeControllers.Xoa_Xe);
 
 
@@ -101,7 +102,7 @@ router.get("/loaiphukien", LoaiphukienControllers.Xem_Loai_Phu_Kien);
 router.get('/loaiphukien/them', function (req, res, next) {
     res.render('loaiphukien/them-loaipk');
 });
-router.post('/loaiphukien/them-moi', upload.single('image'),LoaiphukienControllers.Them_Loai_Phu_Kien);
+router.post('/loaiphukien/them-moi', upload.single('image'), LoaiphukienControllers.Them_Loai_Phu_Kien);
 router.get('/loaiphukien/sua/:lpkId', function (req, res, next) {
     var lpkId = req.params.lpkId;
 
@@ -125,27 +126,27 @@ router.get('/phukien/them', function (req, res, next) {
     })
 
 });
-router.post('/phukien/them-moi', upload.single('anh'),PhukienControllers.Them_Phu_Kien);
-router.get('/phukien/sua/:pkId', function(req, res, next){
+router.post('/phukien/them-moi', upload.single('anh'), PhukienControllers.Them_Phu_Kien);
+router.get('/phukien/sua/:pkId', function (req, res, next) {
     loaiphukiens.find({}, (err, data) => {
 
-        phukiens.findOne({_id: req.params.pkId}, (err, pkData)=> {
-            if(err){
+        phukiens.findOne({_id: req.params.pkId}, (err, pkData) => {
+            if (err) {
                 res.send('id san pham khong ton tai');
             }
 
-            for(var i = 0; i < data.lengnth; i++){
-                if(data[i]._id == pkData.phukien_id.toString()){
+            for (var i = 0; i < data.lengnth; i++) {
+                if (data[i]._id == pkData.phukien_id.toString()) {
                     data[i].selected = true;
                 }
             }
-            res.render('phukien/sua-phukien', {lpk: data,pk : pkData});
+            res.render('phukien/sua-phukien', {lpk: data, pk: pkData});
         });
     })
 });
 router.post('/phukien/luu-sua', upload.single('anh'), PhukienControllers.Sua_Phu_Kien);
 
-router.get('/phukien/xoa/:pkId',  PhukienControllers.Xoa_Phu_Kien);
+router.get('/phukien/xoa/:pkId', PhukienControllers.Xoa_Phu_Kien);
 
 //tin tuc//
 router.get("/tintuc", TintucControllers.Xem_Tin_Tuc);
@@ -156,11 +157,11 @@ router.get('/tintuc/them', function (req, res, next) {
 
 router.post('/tintuc/them-moi', upload.array('anh', 10), function (req, res, next) {
 
-    try{
-        const anh=req.files;
+    try {
+        const anh = req.files;
         var model = new tintucs();
-        model.tieude=req.body.tieude;
-        model.noidung=req.body.noidung;
+        model.tieude = req.body.tieude;
+        model.noidung = req.body.noidung;
         if (!anh) {
             res.status(400).send({
                 status: false,
@@ -170,8 +171,7 @@ router.post('/tintuc/them-moi', upload.array('anh', 10), function (req, res, nex
             let data = [];
 
             // iterate over all photos
-            console.log(anh);
-            anh.map(p => data.push(p.path));
+            anh.map(p => data.push("anh", p.path));
             model.anh = JSON.stringify(data);
             console.log(model);
             model.save();
@@ -216,4 +216,37 @@ router.get('/api/tintuc', (req, res) => {
         res.json({success: true, tintuc: data})
     })
 });
+///login///
+router.get("/", function (req, res, next) {
+    res.render('login/login');
+});
+router.get("/registerappoto", function (req, res, next) {
+    res.render('login/createadmin');
+});
+router.post('/taoadmin/them-moi', upload.single('anh'), function (req, res, next) {
+
+    try {
+        var model = new useradmin();
+        model.user = req.body.user;
+        model.password = req.body.password;
+        model.save();
+        res.redirect('/login');
+    } catch (err) {
+        res.status(500).send(err);
+    }
+
+});
+router.post('/login/confirm', upload.single('anh'), function (req, res, next) {
+
+    useradmin.findOne({user: req.body.user, password: req.body.password}, function (err, user) {
+        if (err) {
+            return res.status(500).send('loi khong xac dinh');
+        }
+        if (!user) {
+            return res.status(404).send('sai  thong tin dang nhap!');
+        }
+        return res.redirect('/home');
+    })
+})
+
 module.exports = router;

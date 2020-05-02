@@ -140,15 +140,19 @@
         <input type="text" name="xuatxu" required value="{{pk.xuatxu}}">
     </div>
     <div>
+        <label >Hỗ trợ các dòng xe :</label>
+        <input type="text" name="htdongxe" value="{{pk.htdongxe}}"required>
+    </div>
+    <div>
         <label >Giá :</label>
-        <input type="text" name="giá" required value="{{pk.gia}}">
+        <input type="text" name="gia" required value="{{pk.gia}}">
     </div>
     <div>
         <img style="width: 150px" src="{{pk.anh}}" >
     </div>
     <div>
         <label >Tải ảnh lên</label>
-        <input type="file" name="anh"  value="{{pk.anh}}" required/>
+        <input type="file" name="anh"  />
     </div>
     <button type="submit">Lưu</button>
     <a href="/" class="button">Hủy</a>
