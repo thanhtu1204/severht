@@ -243,6 +243,7 @@ router.post('/login/confirm', upload.single('anh'), function (req, res, next) {
             return res.status(500).send('loi khong xac dinh');
         }
         if (!user) {
+            console.log(user);
             return res.status(404).send('sai  thong tin dang nhap!');
         }
         return res.redirect('/home');

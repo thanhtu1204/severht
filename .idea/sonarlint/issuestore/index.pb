@@ -76,3 +76,9 @@ I
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
+K
+views/login/createadmin.hbs,f\9\f9e8e16990abcf3cb2e6e00e40bef192413856dd
+E
+views/login/login.hbs,e\b\ebf6439aff9b51d3417573a830db1f7b64504ae4
+C
+models/useradmin.js,5\1\51078431d4a9c8eacc160ce210edb7f38397853a
