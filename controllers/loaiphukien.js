@@ -1,5 +1,5 @@
 const loaiphukiens = require("../models/loaiphukien");
-
+const phukiens = require("../models/phukien");
 exports.Xem_Loai_Phu_Kien=(req,res,next) =>{
     loaiphukiens.find({})
         .populate('cate_id')
@@ -39,6 +39,9 @@ exports.Sua_Loai_Phu_Kien=(req,res,next) =>{
 exports.Xoa_Loai_Phu_Kien=(req,res,next) =>{
     loaiphukiens.remove({ _id: req.params.lpkId }, function (err) {
         if (err) return handleError(err);
+        phukiens.deleteMany({phukien_id: req.params.lpkId}, function (err) {
+            if (err) return handleError(err);
+        })
         res.redirect('/loaiphukien');
     });
 

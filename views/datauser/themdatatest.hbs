@@ -71,18 +71,21 @@
             background: #ff0000;
             color: #fff;
         }
-    form label{
-        font-weight: bold;
-    }
+        form label{
+            font-weight: bold;
+        }
 
     </style>
 </head>
-<h1>Thêm Dòng Xe</h1>
-<form action="/dongxes/them-moi" method="post"
+<h1>Thêm data test</h1>
+<form action="/datauser/them-moi" method="post"
       enctype="multipart/form-data">
     <div>
-        <input type="text" name="tendongxe" class="form-control"/>
+        <input type="text" name="email" class="form-control"/>
+    </div>
+    <div>
+        <input type="text" name="sdt" class="form-control"/>
     </div>
     <button type="submit">Lưu</button>
-    <a href="/home" class="button">Hủy</a>
+    <a href="/datauser" class="button">Hủy</a>
 </form>

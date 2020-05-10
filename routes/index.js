@@ -12,6 +12,7 @@ const XeControllers = require('../controllers/xe');
 const TintucControllers = require('../controllers/tintuc');
 const LoaiphukienControllers = require('../controllers/loaiphukien.js');
 const PhukienControllers = require('../controllers/phukien');
+const DatauserControllers = require('../controllers/datauser');
 // const upload = require('../middleware/upload');
 
 
@@ -171,7 +172,7 @@ router.post('/tintuc/them-moi', upload.array('anh', 10), function (req, res, nex
             let data = [];
 
             // iterate over all photos
-            anh.map(p => data.push("anh", p.path));
+            anh.map(p => data.push(p.path));
             model.anh = JSON.stringify(data);
             console.log(model);
             model.save();
@@ -204,11 +205,25 @@ router.get('/api/xe', (req, res) => {
         res.json({success: true, xes: data})
     })
 });
+//datauser
+router.get("/datauser",DatauserControllers.Xem_Data);
+router.get('/datauser/them', function (req, res, next) {
+    res.render('datauser/themdatatest');
+});
+router.post('/datauser/them-moi', upload.single('anh'),DatauserControllers.Them_Data);
+router.get('/datauser/xoa/:dtId', DatauserControllers.Xoa_Data);
 router.get('/api/phukien', (req, res) => {
     phukiens.find({}, (err, data) => {
         res.json({success: true, pk: data})
     })
 });
+//api dong xe //
+router.get('/api/dongxe', (req, res) => {
+    dongxes.find({}, (err, data) => {
+        res.json({success: true, dongxe: data})
+    })
+});
+
 //api tin tức//
 
 router.get('/api/tintuc', (req, res) => {
